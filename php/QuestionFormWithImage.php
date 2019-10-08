@@ -11,7 +11,7 @@
   <section class="main" id="s1">
     <div style="border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:left;"> <p style="text-align:center;">DATOS DE LA PREGUNTA</p>
 		<form id='fquestion' name='fquestion' action='AddQuestion.php'>
-			Email*: <input type="text" id="email" size=35><span id="eemail"><br>
+			Email*: <input type="text" id="email" size=35><span id="eemail"></span><br>
 			Enunciado de la pregunta*: <input type="text" id="enunciado" size=55><span id="eenunciado"></span><br>
 			Respuesta correcta*: <input type="text" id="correcta" size=55><span id="ecorrecta"></span><br>
 			Respuesta incorrecta 1*: <input type="text" id="incorrecta1" size=55><span id="eincorrecta1"></span><br>
