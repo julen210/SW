@@ -91,46 +91,61 @@ $(document).ready(function(){
 		var inputemail = $('#email').val();
 		var eralumno = /^[a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es)$/;
 		var erprofesor = /^[a-z]+\.*[a-z]+@ehu\.(eus|es)$/;
+		var error = false;
+		var mensajeerror="Se han encontrado los siguientes errores:\n";
 		if(inputemail.length==0){
-			alert('El campo email no puede estar vacío.');
+			error = true;
+			mensajeerror=mensajeerror+'-El campo email no puede estar vacío.\n';
 			e.preventDefault();
 		}
 		else if(!(eralumno.test(inputemail)) && !(erprofesor.test(inputemail))){
-			alert('El campo email no tiene el formato de EHU.');
+			error = true;
+			mensajeerror=mensajeerror+'-El campo email no tiene el formato de EHU.\n';
 			e.preventDefault();
 		}
 		var inputenunciado = $('#enunciado').val();
 		if(inputenunciado.length==0){
-			alert('El campo enunciado no puede estar vacío.');
+			error = true;
+			mensajeerror=mensajeerror+'-El campo enunciado no puede estar vacío.\n';
 			e.preventDefault();
 		}else if(inputenunciado.length<10){
-			alert('El campo enunciado no puede tener menos de 10 caracteres.');
+			error = true;
+			mensajeerror=mensajeerror+'-El campo enunciado no puede tener menos de 10 caracteres.\n';
 			e.preventDefault();
 		}
 		var inputcorrecta = $('#correcta').val();
 		if(inputcorrecta.length==0){
-			alert('El campo respuesta correcta no puede estar vacío.');
+			error = true;
+			mensajeerror=mensajeerror+'-El campo respuesta correcta no puede estar vacío.\n';
 			e.preventDefault();
 		}
 		var inputincorrecta1 = $('#incorrecta1').val();
 		if(inputincorrecta1.length==0){
-			alert('El campo respuesta incorrecta 1 no puede estar vacío.');
+			error = true;
+			mensajeerror=mensajeerror+'-El campo respuesta incorrecta 1 no puede estar vacío.\n';
 			e.preventDefault();
 		}
 		var inputincorrecta2 = $('#incorrecta2').val();
 		if(inputincorrecta2.length==0){
-			alert('El campo respuesta incorrecta 2 no puede estar vacío.');
+			error = true;
+			mensajeerror=mensajeerror+'-El campo respuesta incorrecta 2 no puede estar vacío.\n';
 			e.preventDefault();
 		}
 		var inputincorrecta3 = $('#incorrecta3').val();
 		if(inputincorrecta3.length==0){
-			alert('El campo respuesta incorrecta 3 no puede estar vacío.');
+			error = true;
+			mensajeerror=mensajeerror+'-El campo respuesta incorrecta 3 no puede estar vacío.\n';
 			e.preventDefault();
 		}
 		var inputtema = $('#tema').val();
 		if(inputtema.length==0){
-			alert('El campo tema no puede estar vacío.');
+			error = true;
+			mensajeerror=mensajeerror+'-El campo tema no puede estar vacío.\n';
 			e.preventDefault();
+		}
+		
+		if(error){
+			alert(mensajeerror);
 		}
 	});
 });
