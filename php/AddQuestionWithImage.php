@@ -17,10 +17,11 @@
 			$imagenTMP = $_FILES['foto']['tmp_name'];
 			$carpeta = "A:/xampp/htdocs/Proyecto/images/";
 			move_uploaded_file($imagenTMP, $carpeta.$imagen);
+			$sql="INSERT INTO preguntas (ID, email, enunciado, r_correcta, r_in1, r_in2, r_in3, complejidad, tema, img) VALUES
+			(NULL, '$_POST[email]','$_POST[enunciado]', '$_POST[correcta]', '$_POST[incorrecta1]', '$_POST[incorrecta2]', '$_POST[incorrecta3]',
+			'$_POST[complejidad]', '$_POST[tema]', '$imagen')";
 		}
-		$sql="INSERT INTO preguntas (ID, email, enunciado, r_correcta, r_in1, r_in2, r_in3, complejidad, tema, img) VALUES
-		(NULL, '$_POST[email]','$_POST[enunciado]', '$_POST[correcta]', '$_POST[incorrecta1]', '$_POST[incorrecta2]', '$_POST[incorrecta3]',
-		'$_POST[complejidad]', '$_POST[tema]', '$imagen')";
+
 		
       if (!mysqli_query($mysql ,$sql))
       {
