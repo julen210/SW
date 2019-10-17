@@ -143,6 +143,12 @@ $(document).ready(function(){
 			mensajeerror=mensajeerror+'-El campo tema no puede estar vacío.\n';
 			e.preventDefault();
 		}
+		var inputtema = $('#file').val();
+		if($('#file').get(0).files.length == 0){
+			error = true;
+			mensajeerror=mensajeerror+'-El campo foto no puede estar vacío.\n';
+			e.preventDefault();
+		}
 		
 		if(error){
 			alert(mensajeerror);
