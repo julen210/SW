@@ -87,7 +87,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$("form").submit(function (e) {
+	/*$("form").submit(function (e) {
 		var inputemail = $('#email').val();
 		var eralumno = /^[a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es)$/;
 		var erprofesor = /^[a-z]+\.*[a-z]+@ehu\.(eus|es)$/;
@@ -149,10 +149,9 @@ $(document).ready(function(){
 			mensajeerror=mensajeerror+'-El campo foto no puede estar vacío.\n';
 			e.preventDefault();
 		}
-		
 		if(error){
 			alert(mensajeerror);
 		}
-	});
+	});*/
 });
 

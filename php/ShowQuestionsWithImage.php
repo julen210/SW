@@ -44,20 +44,25 @@
     $query = mysqli_query($conexion, $sql);
 
     if (mysqli_num_rows($query) > 0) {
-      echo"<div style='height:500px;overflow-y:scroll;'>
-      <table>
-        <tr>
-          <th>Email</th>
-          <th>Pregunta</th>
-          <th>Respuesta Correcta</th>
-		  <th>Imagen</th>
-        </tr>
-      ";
+		echo"<div style='height:500px;overflow-y:scroll;'>
+			<table>
+				<tr>
+					<th>Email</th>
+					<th>Pregunta</th>
+					<th>Respuesta Correcta</th>
+					<th>Imagen</th>
+				</tr>
+		";
         // output data of each row
         while($row = mysqli_fetch_assoc($query)) {
           //r_correcta, r_in1, r_in2, r_in3, complejidad, tema  
-		  $rutaimagen = '../images/'.$row["img"];
-          echo" 
+		  if($row["img"]==''){
+			$rutaimagen = '../images/noimage.png';
+		  }else{
+			$rutaimagen = '../images/'.$row["img"];
+          
+		  }
+		  echo" 
           <tr>
             <td>".$row["email"]."</td>
             <td>".$row["enunciado"]."</td>
