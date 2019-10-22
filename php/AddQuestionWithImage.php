@@ -31,7 +31,7 @@
 			mysqli_close($mysql);
 		}
 		function validar($email, $enunciado, $correcta, $incorrecta1, $incorrecta2, $incorrecta3, $complejidad, $tema){
-			if(preg_match("/^[a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es)$/",$email)==0){
+			if(preg_match("/^[a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es)$/",$email)==0 && preg_match("/^[a-z]+\.*[a-z]+@ehu\.(eus|es)$/", $email)==0){
 				echo "<p>Fallo en el email</p>";
 				return false;
 			}

@@ -9,7 +9,7 @@
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div style="border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:left;"> <p style="text-align:center;">DATOS DE LA PREGUNTA</p>
-		<form id='fquestion' name='fquestion' action='AddQuestionWithImage.php' method='post' enctype='multipart/form-data'>
+		<form id='fquestion' name='fquestion' enctype='multipart/form-data'>
 			Email*: <input type="email" id="email" name="email"size=35 pattern="([a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es))||([a-z]+\.*[a-z]+@ehu\.(eus|es))" required><span id="eemail"></span><br>
 			Enunciado de la pregunta*: <input type="text" id="enunciado" name="enunciado" pattern=".{10,}" size=55 required><span id="eenunciado"></span><br>
 			Respuesta correcta*: <input type="text" id="correcta" name="correcta" size=55 required><span id="ecorrecta"></span><br>
