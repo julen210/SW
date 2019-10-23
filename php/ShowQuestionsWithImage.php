@@ -33,6 +33,7 @@
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
     <?php
+	//meter todo en un if para comprobar si está log o no
     // Create connection
     $conexion = mysqli_connect($server, $user, $pass, $basededatos);
     // Check connection
@@ -55,21 +56,20 @@
 		";
         // output data of each row
         while($row = mysqli_fetch_assoc($query)) {
-          //r_correcta, r_in1, r_in2, r_in3, complejidad, tema  
-		  if($row["img"]==''){
-			$rutaimagen = '../images/noimage.png';
-		  }else{
-			$rutaimagen = '../images/'.$row["img"];
-          
-		  }
-		  echo" 
-          <tr>
-            <td>".$row["email"]."</td>
-            <td>".$row["enunciado"]."</td>
-            <td>".$row["r_correcta"]."</td>
-			<td style='text-align:center;'> <img src=".$rutaimagen." height='100'/></td>
-          </tr>
-          ";
+			//r_correcta, r_in1, r_in2, r_in3, complejidad, tema  
+			if($row["img"]==''){
+				$rutaimagen = '../images/noimage.png';
+			}else{
+				$rutaimagen = '../images/'.$row["img"];
+			}
+			echo" 
+				<tr>
+					<td>".$row["email"]."</td>
+					<td>".$row["enunciado"]."</td>
+					<td>".$row["r_correcta"]."</td>
+					<td style='text-align:center;'> <img src=".$rutaimagen." height='100'/></td>
+				</tr>
+			";
         }
         echo"</table></div>";
     } else {
