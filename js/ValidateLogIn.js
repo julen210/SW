@@ -17,8 +17,8 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#password').keyup(function () {
-		var input = $('#pass1').val();
+	$('#pass').keyup(function () {
+		var input = $('#pass').val();
 		if(input.length==0){
 			$('#epass').html("<span style='color:red;'>&#10060; Este campo no puede estar vacío.</span>");
 			return false;

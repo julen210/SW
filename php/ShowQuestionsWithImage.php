@@ -33,50 +33,81 @@
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
     <?php
-	//meter todo en un if para comprobar si está log o no
-    // Create connection
-    $conexion = mysqli_connect($server, $user, $pass, $basededatos);
-    // Check connection
-    if (!$conexion) {
-        die('<div style="color:white; background-color:#ff0000">Error al conectar con la base de datos </div>');
-    }
+		if(isset($_GET['email'])){
+			$conexion = mysqli_connect($server, $user, $pass, $basededatos);
+				// Check connection
+				if (!$conexion) {
+					die('<div style="color:white; background-color:#ff0000">Error al conectar con la base de datos </div>');
+				}
 
-    $sql = "SELECT * FROM preguntas";
-    $query = mysqli_query($conexion, $sql);
+				$sqlUsuario = "SELECT * FROM usuarios";
+				$queryUsuario = mysqli_query($conexion, $sqlUsuario);
 
-    if (mysqli_num_rows($query) > 0) {
-		echo"<div style='height:500px;overflow-y:scroll;'>
-			<table>
-				<tr>
-					<th>Email</th>
-					<th>Pregunta</th>
-					<th>Respuesta Correcta</th>
-					<th>Imagen</th>
-				</tr>
-		";
-        // output data of each row
-        while($row = mysqli_fetch_assoc($query)) {
-			//r_correcta, r_in1, r_in2, r_in3, complejidad, tema  
-			if($row["img"]==''){
-				$rutaimagen = '../images/noimage.png';
-			}else{
-				$rutaimagen = '../images/'.$row["img"];
-			}
-			echo" 
-				<tr>
-					<td>".$row["email"]."</td>
-					<td>".$row["enunciado"]."</td>
-					<td>".$row["r_correcta"]."</td>
-					<td style='text-align:center;'> <img src=".$rutaimagen." height='100'/></td>
-				</tr>
-			";
-        }
-        echo"</table></div>";
-    } else {
-        echo '<div style="color:white; background-color:#ff0000">La base de datos está vacía.</div>';
-    }
+				if (mysqli_num_rows($queryUsuario) > 0) {
+					
+					$encontrado = 0;
+					while($row = mysqli_fetch_assoc($queryUsuario)){
+						if(strcmp($row['email'],$_GET['email'])==0){
+							$encontrado=1;
+							break;	
+						}
+					}
+					
+					if($encontrado){
+						// Create connection
+						$conexion = mysqli_connect($server, $user, $pass, $basededatos);
+						// Check connection
+						if (!$conexion) {
+							die('<div style="color:white; background-color:#ff0000">Error al conectar con la base de datos </div>');
+						}
 
-    mysqli_close($conexion);
+						$sql = "SELECT * FROM preguntas";
+						$query = mysqli_query($conexion, $sql);
+
+						if (mysqli_num_rows($query) > 0) {
+							echo"<div style='height:500px;overflow-y:scroll;'>
+								<table>
+									<tr>
+										<th>Email</th>
+										<th>Pregunta</th>
+										<th>Respuesta Correcta</th>
+										<th>Imagen</th>
+									</tr>
+							";
+							// output data of each row
+							while($row = mysqli_fetch_assoc($query)) {
+								//r_correcta, r_in1, r_in2, r_in3, complejidad, tema  
+								if($row["img"]==''){
+									$rutaimagen = '../images/noimage.png';
+								}else{
+									$rutaimagen = '../images/'.$row["img"];
+								}
+								echo" 
+									<tr>
+										<td>".$row["email"]."</td>
+										<td>".$row["enunciado"]."</td>
+										<td>".$row["r_correcta"]."</td>
+										<td style='text-align:center;'> <img src=".$rutaimagen." height='100'/></td>
+									</tr>
+								";
+							}
+							echo"</table></div>";
+						} else {
+							echo '<div style="color:white; background-color:#ff0000">El usuario no está registrado.</div>';
+						}
+						mysqli_close($conexion);						
+					}else{
+						die('<div style="color:white; background-color:#ff0000">El usuario no está registrado.</div>');
+					}
+					$sql->close();
+					mysqli_close($mysqli);
+						
+				}else{
+					die('<div style="color:white; background-color:#ff0000">El usuario no está registrado.</div>');					
+				}
+		}else{
+			echo "<div style='color:white; background-color:#ff0000'>Para acceder a esta página se necesita haber iniciado sesión.</div>";
+		}
     ?>
 	</section>
   <?php include '../html/Footer.html' ?>
