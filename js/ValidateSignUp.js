@@ -42,17 +42,6 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#pass2').keyup(function () {
-		var input = $('#pass2').val();
-		if(input.length==0){
-			$('#epass2').html("<span style='color:red;'>&#10060; Este campo no puede estar vacío.</span>");
-			return false;
-		}else{
-			$('#epass2').html("<span style='color:green;'>&#9989;</span>");
-			return true;
-		}
-	});
-
 	/*$('#incorrecta2').keyup(function () {
 		var input = $('#incorrecta2').val();
 		if(input.length==0){
