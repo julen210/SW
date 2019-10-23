@@ -42,9 +42,7 @@
 						}else{
 							echo "<div style='color:white; background-color:#ff0000'>Para cerrar sesión debe haberse iniciado.</div>";
 						}
-						$sql->close();
-						mysqli_close($mysqli);
-						
+						mysqli_close($conexion);
 					}else{
 						echo "<div style='color:white; background-color:#ff0000'>Para cerrar sesión debe haberse iniciado.</div>";
 					}

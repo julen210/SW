@@ -35,7 +35,7 @@
 				
 				if($encontrado){
 					echo "	<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:left;'> <p style='text-align:center;'>DATOS DE LA PREGUNTA</p>
-								<form method='POST' action='AddQuestionWithImage.php' id='fquestion' name='fquestion' enctype='multipart/form-data' accept-charset='UTF-8'>
+								<form method='POST' action='AddQuestionWithImage.php?email=".$_GET['email']."' id='fquestion' name='fquestion' enctype='multipart/form-data' accept-charset='UTF-8'>
 									Email*: <input type='text' id='email' name='email' size=35><span id='eemail'></span><br>
 									Enunciado de la pregunta*: <input type='text' id='enunciado' name='enunciado' size=55 value='".$_GET['email']."' readonly><span id='eenunciado'></span><br>
 									Respuesta correcta*: <input type='text' id='correcta' name='correcta' size=55><span id='ecorrecta'></span><br>
@@ -54,8 +54,7 @@
 				}else{
 					echo"<div style='color:white; background-color:#ff0000'>El usuario no está registrado.</div>";
 				}
-				$sql->close();
-				mysqli_close($mysqli);
+				mysqli_close($conexion);
 				
 			}else{
 				echo"<div style='color:white; background-color:#ff0000'>El usuario no está registrado.</div>";

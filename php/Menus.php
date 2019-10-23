@@ -1,5 +1,6 @@
 <div id='page-wrap'>
 <header class='main' id='h1'>
+		<?php include '../php/DbConfig.php' ?>
 		<?php 
 			if(!isset($_GET['email'])){
 				echo "<span class='right'><a href='/Proyecto/php/SignUp.php'>Registro</a></span> ";
@@ -21,10 +22,11 @@
 					while($row = mysqli_fetch_assoc($query)){
 						if(strcmp($row['email'],$_GET['email'])==0){
 							$encontrado=1;
-							if($row["img"]==''){
+							$nombre = $row['nombre'];
+							if($row["imagen"]==''){
 								$rutaimagen = '../images/noimage.png';
 							}else{
-								$rutaimagen = '../images/'.$row["img"];
+								$rutaimagen = '../images/'.$row["imagen"];
 							}
 							break;	
 						}
@@ -32,13 +34,12 @@
 					
 					if($encontrado){
 						echo "	<span class='right' id='logout'><a href='/Proyecto/php/LogOut.php?email=".$_GET['email']."'>Logout</a></span>";
-						echo"	<span class='right'>Bienvenido, ".$_GET['email']."<img src=".$rutaimagen." height='100'/></span>";
+						echo"	<span class='right'>Bienvenido, ".$nombre."<img src=".$rutaimagen." height='100'/></span>";
 					}else{
 						echo "<span class='right'><a href='/Proyecto/php/SignUp.php'>Registro</a></span> ";
 						echo "<span class='right'><a href='/Proyecto/php/LogIn.php'>Login</a></span>";
 					}
-					$sql->close();
-					mysqli_close($mysqli);
+					mysqli_close($conexion);
 					
 				}else{
 					echo "<span class='right'><a href='/Proyecto/php/SignUp.php'>Registro</a></span> ";
@@ -73,16 +74,15 @@
 						}
 						
 						if($encontrado){
-							echo"<span><a href='Layout.php'>Inicio</a></span>";
-							echo"<span><a href='QuestionFormWithImage.php'>Insertar Pregunta</a></span>";
-							echo"<span><a href='ShowQuestionsWithImage.php'>Ver Preguntas</a></span>";
-							echo"<span><a href='Credits.php'>Creditos</a></span>";
+							echo"<span><a href='Layout.php?email=".$_GET['email']."'>Inicio</a></span>";
+							echo"<span><a href='QuestionFormWithImage.php?email=".$_GET['email']."'>Insertar Pregunta</a></span>";
+							echo"<span><a href='ShowQuestionsWithImage.php?email=".$_GET['email']."'>Ver Preguntas</a></span>";
+							echo"<span><a href='Credits.php?email=".$_GET['email']."'>Creditos</a></span>";
 						}else{
 							echo"<span><a href='Layout.php'>Inicio</a></span>";
 							echo"<span><a href='Credits.php'>Creditos</a></span>";
 						}
-						$sql->close();
-						mysqli_close($mysqli);
+						mysqli_close($conexion);
 						
 					}
 				}

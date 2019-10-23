@@ -41,12 +41,11 @@
 						}
 						
 						if($encontrado){
-							echo '<script>alert("Bienvenido, '.$nombre.'.");header(location: Layout.php?email='.$_POST['email'].');</script>';
+							echo '<script>alert("Bienvenido, '.$nombre.'."); location.href="Layout.php?email='.$_POST['email'].'";</script>';
 						}else{
 							echo "<div style='color:white; background-color:#ff0000'>Error en los campos, inténtalo otra vez.</div>";
 						}
-						$sql->close();
-						mysqli_close($mysqli);
+						mysqli_close($conexion);
 						
 					}else{
 						echo "<div style='color:white; background-color:#ff0000'>Error en los campos, inténtalo otra vez.</div>";
