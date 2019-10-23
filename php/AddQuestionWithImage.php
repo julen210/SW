@@ -54,7 +54,7 @@
 			echo "</div>";
 			if($validacion){
 				echo "	<div style='color:white; background-color:#00cc66'>
-						<strong>¡Pregunta guardada con éxito!</strong> Para ver el resto de preguntas <a href='../php/ShowQuestions.php' class='alert-link'>pulsa aquí.</a>.
+						<strong>¡Pregunta guardada con éxito!</strong> Para ver el resto de preguntas <a href='../php/ShowQuestionsWithImage.php' class='alert-link'>pulsa aquí.</a>.
 						</div>
 					";
 			}else{
