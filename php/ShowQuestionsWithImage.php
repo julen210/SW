@@ -99,8 +99,6 @@
 					}else{
 						die('<div style="color:white; background-color:#ff0000">El usuario no está registrado.</div>');
 					}
-					$sql->close();
-					mysqli_close($mysqli);
 						
 				}else{
 					die('<div style="color:white; background-color:#ff0000">El usuario no está registrado.</div>');					
