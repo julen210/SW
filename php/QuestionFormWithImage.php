@@ -36,8 +36,8 @@
 				if($encontrado){
 					echo "	<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:left;'> <p style='text-align:center;'>DATOS DE LA PREGUNTA</p>
 								<form method='POST' action='AddQuestionWithImage.php?email=".$_GET['email']."' id='fquestion' name='fquestion' enctype='multipart/form-data' accept-charset='UTF-8'>
-									Email*: <input type='text' id='email' name='email' size=35><span id='eemail'></span><br>
-									Enunciado de la pregunta*: <input type='text' id='enunciado' name='enunciado' size=55 value='".$_GET['email']."' readonly><span id='eenunciado'></span><br>
+									Email*: <input type='text' id='email' name='email' value='".$_GET['email']."' size=35 readonly><span id='eemail'></span><br>
+									Enunciado de la pregunta*: <input type='text' id='enunciado' name='enunciado' size=55><span id='eenunciado'></span><br>
 									Respuesta correcta*: <input type='text' id='correcta' name='correcta' size=55><span id='ecorrecta'></span><br>
 									Respuesta incorrecta 1*: <input type='text' id='incorrecta1' name='incorrecta1' size=55><span id='eincorrecta1'></span><br>
 									Respuesta incorrecta 2*: <input type='text' id='incorrecta2' name='incorrecta2' size=55><span id='eincorrecta2'></span><br>
