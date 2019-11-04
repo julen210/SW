@@ -52,7 +52,7 @@
 			<?php 
 				if(!isset($_GET['email'])){
 					echo"<span><a href='Layout.php'>Inicio</a></span>";
-					echo"<span><a href='Credits.php'>Creditos</a></span>";
+					echo"<span><a href='Credits.php'>Créditos</a></span>";
 				}else{
 					$conexion = mysqli_connect($server, $user, $pass, $basededatos);
 					// Check connection
@@ -77,10 +77,11 @@
 							echo"<span><a href='Layout.php?email=".$_GET['email']."'>Inicio</a></span>";
 							echo"<span><a href='QuestionFormWithImage.php?email=".$_GET['email']."'>Insertar Pregunta</a></span>";
 							echo"<span><a href='ShowQuestionsWithImage.php?email=".$_GET['email']."'>Ver Preguntas</a></span>";
-							echo"<span><a href='Credits.php?email=".$_GET['email']."'>Creditos</a></span>";
+							echo"<span><a href='ShowXMLQuestions.php?email=".$_GET['email']."'>Ver Preguntas XML</a></span>";
+							echo"<span><a href='Credits.php?email=".$_GET['email']."'>Créditos</a></span>";
 						}else{
 							echo"<span><a href='Layout.php'>Inicio</a></span>";
-							echo"<span><a href='Credits.php'>Creditos</a></span>";
+							echo"<span><a href='Credits.php'>Créditos</a></span>";
 						}
 						mysqli_close($conexion);
 						
