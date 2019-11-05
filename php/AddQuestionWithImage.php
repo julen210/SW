@@ -87,7 +87,7 @@
 				echo "<div style='color:white; background-color:#ff0000'>Error en los campos, inténtalo otra vez <a href='../php/QuestionFormWithImage.php?email=".$_GET['email']."' class='alert-link'>aquí.</a></div>";
 			}
 		}else{
-			echo "<div style='color:white; background-color:#ff0000'>No se ha insertado la pregunta en la BBDD, inténtelo otra vez <a href='../php/QuestionFormWithImage.php?email=".$_GET['email']."' class='alert-link'>aquí.</a></div>";
+			echo "<div style='color:white; background-color:#ff0000'>No se ha añadido ninguna pregunta a la base de datos.</div>";
 		}
     ?>
    
