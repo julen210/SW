@@ -66,6 +66,10 @@
 				$errormsg = $errormsg.'Error de formato en el email.\n';
 				$error=true;
 			}
+			if((preg_match("/^[a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es)$/", $email) == 0 && $typeuser=='1') || (preg_match("/^[a-z]+\.*[a-z]+@ehu\.(eus|es)$/", $email) == 0 && $typeuser == '2')){
+				$errormsg = $errormsg.'El email no concuerda con el tipo de usuario.\n';
+				$error = true;
+			}	
 			if (str_word_count($nombre) < 2) {
 				//echo "<p>Formato del nombre no valido. </p>";
 				$errormsg = $errormsg.'Formato de nombre no valido.\n';
