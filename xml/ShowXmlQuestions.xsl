@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" 
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="/">
-        <HTML>
+        <html>
         <head>
         <style>
 		table {
@@ -28,45 +28,44 @@
 		tr:nth-child(even) {
 			background-color: #dddddd;
 		}
-	</style>
-    </head>
-            <BODY>
-                <P>Preguntas XML</P>
-                <TABLE border="1">
-                    <THEAD>
-                        <TR>
-                            <TH>Autor</TH>
-                            <TH>Enunciado</TH>
-                            <TH>Respuesta Correcta</TH>
-                            <TH>Respuestas Incorrectas</TH>
-                            <TH>Tema</TH>
-                        </TR>
-                    </THEAD>
-                    <xsl:for-each select="/assessmentItems/assessmentItem">
-                        <TR>
-                            <TD>
-                                <xsl:value-of select="@author"/>
-                            </TD>
-                            <TD>
-                                <xsl:value-of select="itemBody/p"/>
-                            </TD>
-                            <TD>
-                                <xsl:value-of select="correctResponse/value"/>
-                            </TD>
-                            <TD>
-                               <xsl:for-each select="incorrectResponses/value">
-                                <li>
-                                    <xsl:value-of select="."/>
-                                </li>
-                                </xsl:for-each>
-                            </TD>
-                            <TD>
-                                <xsl:value-of select="@subject"/>
-                            </TD>
-                        </TR>
-                    </xsl:for-each>
-                </TABLE>
-            </BODY>
-        </HTML>
+		</style>
+		</head>
+		<body>
+			<table border="1">
+				<thead>
+					<tr>
+						<th>Autor</th>
+						<th>Enunciado</th>
+						<th>Respuesta Correcta</th>
+						<th>Respuestas Incorrectas</th>
+						<th>Tema</th>
+					</tr>
+				</thead>
+				<xsl:for-each select="/assessmentItems/assessmentItem">
+					<tr>
+						<td>
+							<xsl:value-of select="@author"/>
+						</td>
+						<td>
+							<xsl:value-of select="itemBody/p"/>
+						</td>
+						<td>
+							<xsl:value-of select="correctResponse/value"/>
+						</td>
+						<td>
+						   <xsl:for-each select="incorrectResponses/value">
+							<li>
+								<xsl:value-of select="."/>
+							</li>
+							</xsl:for-each>
+						</td>
+						<td>
+							<xsl:value-of select="@subject"/>
+						</td>
+					</tr>
+				</xsl:for-each>
+			</table>
+		</body>
+		</html>
     </xsl:template>
 </xsl:stylesheet>
