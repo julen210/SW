@@ -62,7 +62,7 @@
 					$enunciado->addChild('p',$_POST['enunciado']);
 					$correcta = $pregunta->addChild('correctResponse');
 					$correcta->addChild('value',$_POST['correcta']);
-					$incorrectas = $pregunta->addChild('incorrectResponse');
+					$incorrectas = $pregunta->addChild('incorrectResponses');
 					$incorrectas->addChild('value',$_POST['incorrecta1']);
 					$incorrectas->addChild('value',$_POST['incorrecta2']);
 					$incorrectas->addChild('value',$_POST['incorrecta3']);
