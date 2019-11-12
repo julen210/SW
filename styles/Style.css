@@ -12,5 +12,28 @@ footer					{background: #eee; text-align: center;}
 nav span             				{ margin: 0px 10px 0px 0px;
 						width: 100%;
 						display: inline-block;}
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
 
-#ErrorMsgs          		 { color: #f61; font-size: smaler}
+		td, th {
+			border: 1px solid black;
+			padding: 8px;
+		}
+
+		th{
+			background-color: #0066ff;
+			color: white;
+			text-align: center;
+		}
+		td{
+			text-align: left;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+#ErrorMsgs          		 { color: #f61; font-size: smaler;}
+

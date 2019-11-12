@@ -4,31 +4,7 @@
     <xsl:template match="/">
         <html>
         <head>
-        <style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		td, th {
-			border: 1px solid black;
-			padding: 8px;
-		}
-
-		th{
-			background-color: #0066ff;
-			color: white;
-			text-align: center;
-		}
-		td{
-			text-align: left;
-		}
-
-		tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-		</style>
+			<link rel="stylesheet" href="../styles/styles.css">
 		</head>
 		<body>
 			<table border="1">

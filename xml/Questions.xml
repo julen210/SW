@@ -3,7 +3,9 @@
 <assessmentItems>
 	<assessmentItem subject="Web" author="jvadillo001@ikasle.ehu.eus">
 		<itemBody>
-			<p>Tag HTML para añadir un formulario</p>
+			<p>
+				Tag HTML para añadir un formulario
+			</p>
 		</itemBody>
 		<correctResponse>
 			<value>
@@ -16,10 +18,11 @@
 			<value> DIV </value>
 		</incorrectResponses>
 	</assessmentItem>
-		<assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
+	<assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
 		<itemBody>
-			<p>Este protocolo acabará funcionando
-			incluso entre dos latas unidas por un cordón</p>
+			<p>
+				Este protocolo acabará funcionando incluso entre dos latas unidas por un cordón
+			</p>
 		</itemBody>
 		<correctResponse>
 			<value>
@@ -37,12 +40,53 @@
 			<p>enunciado pregunta</p>
 		</itemBody>
 		<correctResponse>
-			<value>respuesta correcta</value>
+			<value>
+				respuesta correcta
+			</value>
 		</correctResponse>
-		<incorrectResponse>
+		<incorrectResponses>
 			<value>respuesta incorrecta 1</value>
 			<value>respuesta incorrecta 2</value>
 			<value>respuesta incorrecta 3</value>
-		</incorrectResponse>
+		</incorrectResponses>
 	</assessmentItem>
-<assessmentItem subject="tema de la pregunta" author="prueba@ehu.es"><itemBody><p>enunciado pregunta</p></itemBody><correctResponse><value>respuesta correcta</value></correctResponse><incorrectResponse><value>respuesta incorrecta 1</value><value>respuesta incorrecta 2</value><value>respuesta incorrecta 3</value></incorrectResponse></assessmentItem></assessmentItems>
+	<assessmentItem subject="tema de la pregunta" author="prueba@ehu.es">
+		<itemBody>
+			<p>enunciado pregunta</p>
+		</itemBody>
+		<correctResponse>
+			<value>respuesta correcta</value>
+		</correctResponse>
+		<incorrectResponses>
+			<value>respuesta incorrecta 1</value>
+			<value>respuesta incorrecta 2</value>
+			<value>respuesta incorrecta 3</value>
+		</incorrectResponses>
+	</assessmentItem>
+		<assessmentItem subject="tema de la pregunta" author="prueba@ehu.es">
+		<itemBody>
+			<p>enunciado pregunta</p>
+		</itemBody>
+		<correctResponse>
+			<value>respuesta correcta</value>
+		</correctResponse>
+		<incorrectResponses>
+			<value> respuesta incorrecta 1</value>
+			<value> respuesta incorrecta 2</value>
+			<value>respuesta incorrecta 3</value>
+		</incorrectResponses>
+	</assessmentItem>
+	<assessmentItem subject="tema de la pregunta" author="prueba@ehu.es">
+		<itemBody>
+			<p>enunciado pregunta</p>
+		</itemBody>
+		<correctResponse>
+			<value>respuesta correcta</value>
+		</correctResponse>
+		<incorrectResponses>
+			<value>respuesta incorrecta 1</value>
+			<value>respuesta incorrecta 2</value>
+			<value>respuesta incorrecta 3</value>
+		</incorrectResponses>
+	</assessmentItem>
+</assessmentItems>

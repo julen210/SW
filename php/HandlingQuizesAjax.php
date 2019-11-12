@@ -3,13 +3,17 @@
 <head>
   <?php include '../html/Head.html'?>
   <script src="../js/jquery-3.4.1.min.js"></script>
-  <script src="../js/ValidateFieldsQuestion.js"></script>
-  <script src="../js/ShowImageInForm.js"></script>
+  <script src="../js/AddQuestionsAjax.js"></script>
+	<script src="../js/ShowQuestionsAjax.js"></script>
+	<script src="../js/ValidateFieldsQuestion.js"></script>
+	<script src="../js/ShowImageInForm.js"></script>
 	<?php include '../php/DbConfig.php' ?>
+	<link rel="stylesheet" href="../styles/Style.css">
+
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
-  <section class="main" id="s1">
+  <section style='overflow-y:scroll;' class="main" id="s1">
 	<?php
 		if(!isset($_GET['email'])){
 			echo "<div style='color:white; background-color:#ff0000'>Para acceder a esta página se necesita haber iniciado sesión.</div>";
@@ -34,7 +38,7 @@
 				}
 				
 				if($encontrado){
-					echo "	<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:left;'> <p style='text-align:center;'>DATOS DE LA PREGUNTA</p>
+					echo "	<div><div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:left;'> <p style='text-align:center;'>DATOS DE LA PREGUNTA</p>
 								<form method='POST' action='HandlingQuizesAjax.php?email=".$_GET['email']."' id='fquestion' name='fquestion' enctype='multipart/form-data' accept-charset='UTF-8'>
 									Email*: <input type='text' id='email' name='email' value='".$_GET['email']."' size=35 readonly><span id='eemail'></span><br>
 									Enunciado de la pregunta*: <input type='text' id='enunciado' name='enunciado' size=55><span id='eenunciado'></span><br>
@@ -47,9 +51,9 @@
 																	<input type='radio' name='complejidad' value='3' id='complejidad'> Alta <br>
 									Tema de la pregunta*: <input type='text' id='tema' name='tema' size=55><span id='etema'></span><br>
 									Imagen relacionada con la pregunta*: <input type='file' id='file' accept='image/*' name='foto' onchange='verImagen(event)'>
-									<p style='text-align:center;'><input type='submit' id='enviar' name='enviar' value='Enviar'></p>	
+									<p style='text-align:center;'><input type='button' id='ver' name='ver' value='Ver Preguntas'><input type='button' id='enviar' name='enviar' value='Insertar pregunta'><input type='button' id='reset' name='reset' value='Vaciar formulario'></p>	
 								</form>
-							</div>";
+							</div><div id='vertabla'></div><div id='vermensajes'></div></div>";
 
 				}else{
 					echo"<div style='color:white; background-color:#ff0000'>El usuario no está registrado.</div>";
