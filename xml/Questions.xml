@@ -50,43 +50,4 @@
 			<value>respuesta incorrecta 3</value>
 		</incorrectResponses>
 	</assessmentItem>
-	<assessmentItem subject="tema de la pregunta" author="prueba@ehu.es">
-		<itemBody>
-			<p>enunciado pregunta</p>
-		</itemBody>
-		<correctResponse>
-			<value>respuesta correcta</value>
-		</correctResponse>
-		<incorrectResponses>
-			<value>respuesta incorrecta 1</value>
-			<value>respuesta incorrecta 2</value>
-			<value>respuesta incorrecta 3</value>
-		</incorrectResponses>
-	</assessmentItem>
-		<assessmentItem subject="tema de la pregunta" author="prueba@ehu.es">
-		<itemBody>
-			<p>enunciado pregunta</p>
-		</itemBody>
-		<correctResponse>
-			<value>respuesta correcta</value>
-		</correctResponse>
-		<incorrectResponses>
-			<value> respuesta incorrecta 1</value>
-			<value> respuesta incorrecta 2</value>
-			<value>respuesta incorrecta 3</value>
-		</incorrectResponses>
-	</assessmentItem>
-	<assessmentItem subject="tema de la pregunta" author="prueba@ehu.es">
-		<itemBody>
-			<p>enunciado pregunta</p>
-		</itemBody>
-		<correctResponse>
-			<value>respuesta correcta</value>
-		</correctResponse>
-		<incorrectResponses>
-			<value>respuesta incorrecta 1</value>
-			<value>respuesta incorrecta 2</value>
-			<value>respuesta incorrecta 3</value>
-		</incorrectResponses>
-	</assessmentItem>
 </assessmentItems>
