@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <?php include '../html/Head.html'?>
-  <script src="../js/jquery-3.4.1.min.js"></script>
-  <script src="../js/AddQuestionsAjax.js"></script>
+	<?php include '../html/Head.html'?>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/AddQuestionsAjax.js"></script>
 	<script src="../js/ShowQuestionsAjax.js"></script>
 	<script src="../js/ShowImageInForm.js"></script>
 	<?php include '../php/DbConfig.php' ?>
 	<link rel="stylesheet" href="../styles/Style.css">
+	<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			border: 1px solid black;
+			padding: 8px;
+		}
+
+		th{
+			background-color: #0066ff;
+			color: white;
+			text-align: center;
+		}
+		td{
+			text-align: left;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+	</style>
 
 </head>
 <body>
