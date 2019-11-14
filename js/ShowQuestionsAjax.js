@@ -27,26 +27,45 @@ function mostrarTabla(){
 		document.getElementById('vertabla').innerHTML=tabla;
 	}
 }
-
-
-function num_preguntas(){
-	var parcial=0;
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			x=xhttp.responseXML.documentElement.getElementsByTagName("assessmentItem");
-			var autor=document.getElementById("email").value;
-			for (i=0;i<x.length;i++){
-				var autorpregunta=x[i].getAttribute("author");
-				if (autorpregunta==autor){
-					parcial=parcial+1;
-				}		
+$(document).ready(function(){
+    $('#numpreguntas').html("<img src='../images/loading.gif' width='15' />");
+	$('#numpersonas').html("<img src='../images/loading.gif' width='15' />");
+	setInterval(function(){num_preguntas();}, 6000);
+	setInterval(function(){num_personas();}, 7000);
+	
+	function num_preguntas(){
+		$.ajax({
+			type:"POST",
+			url: "../xml/Questions.xml",
+			dataType: "xml",
+			cache:false,
+			success: function(questions){
+				var parcial = 0;
+				var total = $(questions).find('assessmentItems').children().length;
+				var autor = $('#email').val();
+				$(questions).find('assessmentItem').each(function(){
+					var autorpregunta=$(this).attr('author');
+					if (autorpregunta==autor){
+						parcial=parcial+1;
+					}		
+				});
+				var texto=parcial+"/"+total;
+				$('#numpreguntas').html(texto);
 			}
-			texto=parcial+"/"+x.length;
-			document.getElementById("numeropreguntas").innerHTML=texto;
-		}
+		});
 	}
-	xhttp.open("GET","../xml/Questions.xml",true);
-	xhttp.send();	
-};
+
+	function num_personas(){
+		$.ajax({
+			type:"POST",
+			url: "../xml/Counter.xml",
+			dataType: "xml",
+			cache:false,
+			success: function(counter){
+				var total = $(counter).find('usersonline').children().length;
+				$('#numpersonas').html(total);
+			}
+		});
+	}
+});
 

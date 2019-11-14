@@ -61,9 +61,8 @@ $(document).ready(function(){
 				$('#vermensajes').append(mensaje);
 				$('#vermensajes').append(data);
 				if(data != ""){
-					mostrarTabla2();
+					setTimeout(function(){mostrarTabla2();}, 200);
 				}
-				setTimeout(function(){mostrarTabla2();}, 200);
 			}
 		})
 		

@@ -38,8 +38,11 @@
 				
 				if($encontrado){
 					echo "	<div>
-								<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:left;'> 
-									<p style='text-align:center;'>MIS PREGUNTAS / TOTAL PREGUNTAS</p><br><span id='numeropreguntas'></span>
+								<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:center;'> 
+									<p style='text-align:center;'>USUARIOS ONLINE</p><span id='numpersonas'></span>
+								</div><br>
+								<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:center;'> 
+									<p style='text-align:center;'>MIS PREGUNTAS / TOTAL PREGUNTAS</p><span id='numpreguntas'></span>
 								</div><br>
 								<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:left;'> <p style='text-align:center;'>DATOS DE LA PREGUNTA</p>
 								<form method='POST' id='fquestion' name='fquestion' enctype='multipart/form-data' accept-charset='UTF-8'>

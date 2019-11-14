@@ -27,31 +27,7 @@
 		</div>
 		<?php
 		echo "<div>";
-		$validacion = false;
-		if (isset($_POST['enviar'])) {
-			$validacion = validar($_POST['email'], $_POST['nombre'], $_POST['pass1'], $_POST['pass2'], $_POST['typeuser']);
-			if ($validacion) {
-				//comprobar nombre y apellido
-				//alerts (video)
-				//base de datos
-				$mysql = mysqli_connect($server, $user, $pass, $basededatos);
-			
-				$imagen = $_FILES['foto']['name'];
-				$imagenTMP = $_FILES['foto']['tmp_name'];
-				$carpeta = "A:/xampp/htdocs/Proyecto/images/";
-				move_uploaded_file($imagenTMP, $carpeta.$imagen);
-			
-			$sql="INSERT INTO usuarios (ID, email, nombre, password, tipo, imagen) VALUES
-			(NULL, '$_POST[email]','$_POST[nombre]', '$_POST[pass1]', '$_POST[typeuser]', '$imagen')";
-			if (!mysqli_query($mysql ,$sql)){
-				die('<div style="color:white; background-color:#ff0000">Error en el servidor, inténtalo otra vez <a href="../php/QuestionFormWithImage.php" class="alert-link">aquí.</a></div>');
-			}
-			mysqli_close($mysql);
-			}
-		}
-
-
-		function validar($email, $nombre, $pass1, $pass2, $typeuser)
+				function validar($email, $nombre, $pass1, $pass2, $typeuser)
 		{
 			$error= false;
 			$errormsg='Se han encontrado los siguientes errores:\n';
@@ -101,8 +77,40 @@
 			}
 			
 		}
+		$validacion = false;
+		if (isset($_POST['enviar'])) {
+			$validacion = validar($_POST['email'], $_POST['nombre'], $_POST['pass1'], $_POST['pass2'], $_POST['typeuser']);
+			if ($validacion) {
+				$mysql = mysqli_connect($server, $user, $pass, $basededatos);
+				$imagen = $_FILES['foto']['name'];
+				$imagenTMP = $_FILES['foto']['tmp_name'];
+				$carpeta = "A:/xampp/htdocs/Proyecto/images/";
+				move_uploaded_file($imagenTMP, $carpeta.$imagen);			
+				$emails = "SELECT * from usuarios WHERE email='".$_POST['email']."'";
+				$queryemails = mysqli_query($mysql, $emails);
+				if (!$queryemails){
+					die('<div style="color:white; background-color:#ff0000">No se ha podido establecer la conexión con la base de datos.</div>');
+				}else{
+					if (mysqli_num_rows($queryemails) == 0) {
+						$sql="INSERT INTO usuarios (ID, email, nombre, password, tipo, imagen) 
+								VALUES (NULL, '$_POST[email]','$_POST[nombre]', '$_POST[pass1]', '$_POST[typeuser]', '$imagen')";
+						if(mysqli_query($mysql, $sql)){
+							$registrado = true;
+						}else{
+							echo '<div style="color:white; background-color:#ff0000">El usuario no se ha podido registrar.</div>';
+							$registrado = false;
+						}
+						
+					}else{
+						echo '<div style="color:white; background-color:#ff0000">El usuario ya está registrado.</div>';
+						$registrado = false;
+					}
+				}
+				mysqli_close($mysql);
+			}
+		}
 		echo "</div>";
-		if ($validacion) {
+		if ($validacion && $registrado) {
 			echo "	<div style='color:white; background-color:#00cc66'>
             <strong>¡Registro realizado con éxito!</strong> Para entrar <a href='../php/LogIn.php' class='alert-link'>pulsa aquí.</a>.
             </div>

@@ -33,7 +33,8 @@
 					}
 					
 					if($encontrado){
-						echo "	<span class='right' id='logout'><a href='/Proyecto/php/LogOut.php?email=".$_GET['email']."'>Logout</a></span>";
+						include '../php/IncreaseGlobalCounter.php';
+						echo "	<span class='right' id='logout'><a href='DecreaseGlobalCounter.php?email=".$_GET['email']."'>Logout</a></span>";
 						echo"	<span class='right'>Bienvenido, ".$nombre."<img src=".$rutaimagen." height='100'/></span>";
 					}else{
 						echo "<span class='right'><a href='/Proyecto/php/SignUp.php'>Registro</a></span> ";
