@@ -81,7 +81,7 @@
 																	<input type='radio' name='complejidad' value='2' id='complejidad'> Media 
 																	<input type='radio' name='complejidad' value='3' id='complejidad'> Alta <br>
 									Tema de la pregunta*: <input type='text' id='tema' name='tema' size=55><span id='etema'></span><br>
-									Imagen relacionada con la pregunta*: <input type='file' id='file' accept='image/*' name='foto' onchange='verImagen(event)'>
+									Imagen relacionada con la pregunta*: <input type='file' id='file' accept='image/*' name='foto' onchange='verImagen(event)'><div id='showfile'></div>
 									<p style='text-align:center;'><input type='button' id='ver' name='ver' value='Ver Preguntas' onclick='mostrarTabla()'><input type='button' id='enviar' name='enviar' value='Insertar pregunta'><input type='button' id='reset' name='reset' value='Vaciar formulario'></p>	
 								</form>
 							</div><div id='vermensajes'></div><div id='vertabla'></div></div>";

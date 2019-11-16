@@ -64,7 +64,7 @@ $(document).ready(function(){
 					setTimeout(function(){mostrarTabla2();}, 200);
 				}
 			}
-		})
+		});
 		
 	});
 	$("#reset").click(function (event) {

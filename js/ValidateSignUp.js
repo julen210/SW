@@ -1,4 +1,71 @@
 $(document).ready(function(){
+	var activarmail = false;
+	var activarpass = false;
+	
+	$('#email').change(function(){
+		var email = $('#email').val();
+		if(email!=""){
+			$.ajax({		
+				type:"POST",
+				url: "ClientVerifyEnrollment.php?email="+email,
+				cache:false,
+				success: function(mensaje){
+					if(mensaje=="SI"){
+						activarmail=true;
+						$('#emailvip').html("<span style='color:green;'>&#9989; EL EMAIL ES VIP</span>");
+						/*
+						if(activarmail && activarpass){
+							$('#enviar').prop("disabled", true);
+						}*/
+					}else{
+						activarmail=false;
+						$('#emailvip').html("<span style='color:red;'>&#10060; EL EMAIL NO ES VIP</span>");
+					}
+					
+					if(activarmail && activarpass){
+						$('#enviar').prop("disabled", false);
+					}else{
+						$('#enviar').prop("disabled", true);
+					}
+				}
+			});
+		}
+	});
+		
+	$('#pass1').change(function(){
+		var pass = $('#pass1').val();
+		var ticket = 1010;
+		if(pass!=""){
+			$.ajax({		
+				type:"POST",
+				url: "ClientVerifyPass.php",
+				cache:false,
+				data:{'pass':pass,'ticket':ticket},
+				success: function(mensaje){
+					$('#passsegura').html("<span style='color:green;'>"+mensaje+"</span>");
+					if(mensaje=="VALIDA"){
+						activarpass=true;
+						//$('#passsegura').html("<span style='color:green;'>&#9989; LA CONTRASEÑA ES SEGURA</span>");
+						
+						/*
+						if(activarmail && activarpass){
+							$('#enviar').prop("disabled", true);
+						}*/
+					}else{
+						activarpass=false;
+						//$('#passsegura').html("<span style='color:red;'>&#10060; LA CONTRASEÑA NO ES SEGURA</span>");
+					}
+					
+					if(activarmail && activarpass){
+						$('#enviar').prop("disabled", false);
+					}else{
+						$('#enviar').prop("disabled", true);
+					}
+				}
+			});
+		}
+	});
+
 	$('#email').keyup(function () {
 		var input = $('#email').val();
 		var eralumno = /^[a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es)$/;
@@ -12,7 +79,7 @@ $(document).ready(function(){
 			return false;
 		}
 		else{
-			$('#eemail').html("<span style='color:green;'>&#9989;</span>");
+			$('#eemail').html("<span style='color:green;'>&#9989; El email cumple el formato.</span>");
 			return true;
 		}
 	});
