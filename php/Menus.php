@@ -77,6 +77,7 @@
 						if($encontrado){
 							echo"<span><a href='Layout.php?email=".$_GET['email']."'>Inicio</a></span>";
 							echo"<span><a href='HandlingQuizesAjax.php?email=".$_GET['email']."'>Gestionar preguntas</a></span>";
+							echo"<span><a href='ClientGetQuestion.php?email=".$_GET['email']."'>Obtener Preguntas</a></span>";
 							echo"<span><a href='Credits.php?email=".$_GET['email']."'>Créditos</a></span>";
 						}else{
 							echo"<span><a href='Layout.php'>Inicio</a></span>";

@@ -42,18 +42,12 @@ $(document).ready(function(){
 				cache:false,
 				data:{'pass':pass,'ticket':ticket},
 				success: function(mensaje){
-					$('#passsegura').html("<span style='color:green;'>"+mensaje+"</span>");
 					if(mensaje=="VALIDA"){
 						activarpass=true;
-						//$('#passsegura').html("<span style='color:green;'>&#9989; LA CONTRASEÑA ES SEGURA</span>");
-						
-						/*
-						if(activarmail && activarpass){
-							$('#enviar').prop("disabled", true);
-						}*/
+						$('#passsegura').html("<span style='color:green;'>&#9989; LA CONTRASEÑA ES SEGURA</span>");
 					}else{
 						activarpass=false;
-						//$('#passsegura').html("<span style='color:red;'>&#10060; LA CONTRASEÑA NO ES SEGURA</span>");
+						$('#passsegura').html("<span style='color:red;'>&#10060; LA CONTRASEÑA NO ES SEGURA</span>");
 					}
 					
 					if(activarmail && activarpass){

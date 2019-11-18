@@ -56,6 +56,7 @@
 				echo "<div style='color:white; background-color:#ff0000'>No puede haber campos vacíos.</div>";
 			}
 		?>
+		</div>
 	</div>
   </section>
   <?php include '../html/Footer.html' ?>
