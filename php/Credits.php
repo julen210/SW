@@ -3,7 +3,7 @@
 <head>
   <?php include '../html/Head.html'?>
   <?php 
-	define("API_OWM","2c166a145ac561fb98d039878d560c06");
+	define("API_OWM","2c166a145ac561fb98d039878d560c06");	
 	$datoscliente = json_decode(file_get_contents('http://www.geoplugin.net/json.gp?ip='.$_SERVER['REMOTE_ADDR']),true);
 ?>
 	<script src="../js/jquery-3.4.1.min.js"></script>
@@ -43,7 +43,7 @@
 				if ( !is_numeric($temp) ) { return false; }
 				return round(($temp - 273.15));
 			}		
-			$datostiempo = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/forecast?daily&lat=".$datoscliente['geoplugin_latitude']."&lon=".$datoscliente['geoplugin_longitude']."&APPID=".API_OWM."&lang=es&cnt=16"),true);
+			$datostiempo = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/forecast?daily&lat=".$datoscliente['geoplugin_latitude']."&lon=".$datoscliente['geoplugin_longitude']."&APPID=".API_OWM."&lang=es&cnt=40"),true);
 			echo "<h2>Previsión para los próximos 5 días en ".$datoscliente['geoplugin_city'].", ".$datoscliente['geoplugin_region'].", ".$datoscliente['geoplugin_countryName']."</h2>";
 			echo "* Intervalos cada 3 horas.<br><br>";
 			echo"<div style='width:50%;height:500px;overflow-y:scroll;margin:auto;'>
