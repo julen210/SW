@@ -25,13 +25,13 @@
 	-o-transition: all 0.2s ease;
 	transition: margin 0.2s ease;
 }
-.spoilerbutton[value="Mostrar tu ubicación"] + .spoiler > div,
+.spoilerbutton[value="Mostrar tu ubicación y la del servidor"] + .spoiler > div,
 .spoilerbutton[value="Mostrar desarrolladores"] + .spoiler > div, 
 .spoilerbutton[value="Mostrar tu latitud y longitud"] + .spoiler > div, 
 .spoilerbutton[value="Mostrar previsión del tiempo en tu ubicación"] + .spoiler > div  {
 	margin-top:-100%;
 }
-.spoilerbutton[value="Ocultar tu ubicación"] + .spoiler > div,
+.spoilerbutton[value="Ocultar tu ubicación y la del servidor"] + .spoiler > div,
 .spoilerbutton[value="Ocultar desarrolladores"] + .spoiler > div,
 .spoilerbutton[value="Ocultar tu latitud y longitud"] + .spoiler > div, 
 .spoilerbutton[value="Ocultar previsión del tiempo en tu ubicación"] + .spoiler > div {
