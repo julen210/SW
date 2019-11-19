@@ -29,7 +29,7 @@
 		<input class="spoilerbutton" type="button" value="Mostrar tu ubicación" onclick="this.value=this.value=='Mostrar tu ubicación'?'Ocultar tu ubicación':'Mostrar tu ubicación';">
 		<div class="spoiler"><div></div>
 		<?php
-			echo "<h2>Tu conexión se encuentra en:<br>";
+			echo "<h2>Tu dirección IP se encuentra en:<br>";
 			echo $datoscliente['geoplugin_city'].", ".$datoscliente['geoplugin_region'].", ".$datoscliente['geoplugin_countryName']."<br>";
 			echo "Latitud: ".$datoscliente['geoplugin_latitude']." <br> Longitud: ".$datoscliente['geoplugin_longitude']."</h2>";
 			echo "<br>";
