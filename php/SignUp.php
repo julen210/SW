@@ -1,3 +1,4 @@
+<?php include '../php/Menus.php' ?>
 <!DOCTYPE html>
 <html>
 
@@ -11,22 +12,32 @@
 </head>
 
 <body>
-	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
-		<div style="border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; width:70%; margin-left:auto; margin-right:auto; text-align:left; padding: 1em;"> <p style="text-align:center;">REGISTRO</p><br>
-			<form method="POST" action="" id='fsignup' name='fsignup' enctype="multipart/form-data" accept-charset="UTF-8">
-				Email*: <br><input type="text" id="email" name="email" size=35><span id="eemail"></span><br>
-				<div id="emailvip"></div><br>
-				Nombre y Apellidos*: <br><input type="text" id="nombre" name="nombre" size=55><span id="enombre"></span><br>
-				Contraseña*: <br><input type="password" id="pass1" name="pass1" size=55><span id="epass1"></span><br>
-				<div id="passsegura"></div><br>
-				Repetir Contraseña*: <br><input type="password" id="pass2" name="pass2" size=55><span id="epass2"></span><br>
-				Tipo de Usuario*: <input type="radio" name="typeuser" value="1" id="typeuser1" checked> Alumno
-				<input type="radio" name="typeuser" value="2" id="typeuser2"> Profesor <br>
-				Imagen: <input type="file" id="file" accept="image/*" name="foto" onchange="verImagen(event)"><br><img id="imagen" name="imagen" width="100" /><br>
-				<p style="text-align:center;"><input type="submit" id="enviar" name="enviar" value="Enviar" disabled></p>
-			</form>
-		</div>
+	<?php
+		if(!isset($_SESSION)){
+			session_start();
+		}
+		if(!isset($_SESSION['email'])){
+			
+			echo "	<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; width:70%; margin-left:auto; margin-right:auto; text-align:left; padding: 1em;'> <p style='text-align:center;'>REGISTRO</p><br>
+							<form method='POST' action='' id='fsignup' name='fsignup' enctype='multipart/form-data' accept-charset='UTF-8'>
+								Email*: <br><input type='text' id='email' name='email' size=35><span id='eemail'></span><br>
+								<div id='emailvip'></div><br>
+								Nombre y Apellidos*: <br><input type='text' id='nombre' name='nombre' size=55><span id='enombre'></span><br>
+								Contraseña*: <br><input type='password' id='pass1' name='pass1' size=55><span id='epass1'></span><br>
+								<div id='passsegura'></div><br>
+								Repetir Contraseña*: <br><input type='password' id='pass2' name='pass2' size=55><span id='epass2'></span><br>
+								Tipo de Usuario*: <input type='radio' name='typeuser' value='1' id='typeuser1' checked> Alumno
+								<input type='radio' name='typeuser' value='2' id='typeuser2'> Profesor <br>
+								Imagen: <input type='file' id='file' accept='image/*' name='foto' onchange='verImagen(event)'><br><img id='imagen' name='imagen' width='100' /><br>
+								<p style='text-align:center;'><input type='submit' id='enviar' name='enviar' value='Enviar' disabled></p>
+							</form>
+						</div>
+					";
+		}else{					
+			echo "<div style='color:white; background-color:#ff0000'>Para acceder a esta página no se puede tener la sesión iniciada.</div>";
+		}
+	?>	
 		<?php
 			if(!isset($_SESSION['email'])){
 				echo "<div>";

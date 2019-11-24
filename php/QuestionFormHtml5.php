@@ -1,3 +1,4 @@
+<?php include '../php/Menus.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,6 @@
   <script src="../js/ShowImageInForm.js"></script>
 </head>
 <body>
-  <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
   	<?php
 		if(!isset($_SESSION)){

@@ -1,3 +1,4 @@
+<?php include '../php/Menus.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,6 @@
 	
 </head>
 <body onload="mapa(<?php echo $datoscliente['geoplugin_longitude'];?>, <?php echo $datoscliente['geoplugin_latitude'];?> );">
-  <?php include '../php/Menus.php' ?>
   <section style='overflow-y:scroll;' class="main" id="s1">
     <div>
 		<input class="spoilerbutton" type="button" value="Mostrar desarrolladores" onclick="this.value=this.value=='Mostrar desarrolladores'?'Ocultar desarrolladores':'Mostrar desarrolladores';">

@@ -1,3 +1,4 @@
+<?php include '../php/Menus.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,6 @@
 	<?php include '../php/DbConfig.php' ?>
 </head>
 <body>
-  <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
 	<?php
 		if(!isset($_SESSION)){

@@ -1,3 +1,4 @@
+<?php include '../php/Menus.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,6 @@
 	</style>
 </head>
 <body>
-  <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
 		<?php

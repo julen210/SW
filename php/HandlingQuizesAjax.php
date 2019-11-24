@@ -1,3 +1,4 @@
+<?php include '../php/Menus.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,6 @@
 
 </head>
 <body>
-  <?php include '../php/Menus.php' ?>
   <section style='overflow-y:scroll;' class="main" id="s1">
 	<?php
 		if(!isset($_SESSION)){

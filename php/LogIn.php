@@ -1,3 +1,4 @@
+<?php include '../php/Menus.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +9,26 @@
     
 </head>
 <body>
-  <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
-    <div>
-		<div style="border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; width:70%; margin-left:auto; margin-right:auto; text-align:left; padding: 1em;"> <p style="text-align:center;">INICIO DE SESIÓN</p><br>
-		<form method="POST" action="LogIn.php" id='fquestion' name='fquestion' enctype="multipart/form-data" accept-charset="UTF-8">
-			Email*: <br><input type="text" id="email" name="email" size=35><span id='eemail'></span><br>
-			Contraseña*: <br><input type="password" id="pass" name="password" size=35><span id='epass'></span><br><br>
-			<p><input type="submit" id="enviar" name="enviar" value="Enviar"></p>	
+  	<?php
+		if(!isset($_SESSION)){
+			session_start();
+		}
+		if(!isset($_SESSION['email'])){
+			
+			echo "	<div>
+		<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; width:70%; margin-left:auto; margin-right:auto; text-align:left; padding: 1em;'> <p style='text-align:center;'>INICIO DE SESIÓN</p><br>
+		<form method='POST' action='LogIn.php' id='fquestion' name='fquestion' enctype='multipart/form-data' accept-charset='UTF-8'>
+			Email*: <br><input type='text' id='email' name='email' size=35><span id='eemail'></span><br>
+			Contraseña*: <br><input type='password' id='pass' name='password' size=35><span id='epass'></span><br><br>
+			<p><input type='submit' id='enviar' name='enviar' value='Enviar'></p>	
 		</form>
+					";
+		}else{
+					
+			echo "<div style='color:white; background-color:#ff0000'>Para acceder a esta página no se puede tener la sesión iniciada.</div>";		
+		}
+	?>	
 		<?php
 			if(isset($_POST['email'])&&isset($_POST['password'])){
 				//comprobar si está en la BBDD
