@@ -9,7 +9,10 @@
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
 		<?php
-		if(!isset($_GET['email'])){
+		if(!isset($_SESSION)){
+			session_start();
+		}
+		if(!isset($_SESSION['email'])){
 			echo "<div style='color:white; background-color:#ff0000'>Para acceder a esta página se necesita haber iniciado sesión.</div>";
 		}else{
 			$conexion = mysqli_connect($server, $user, $pass, $basededatos);
@@ -25,22 +28,24 @@
 				
 				$encontrado = 0;
 				while($row = mysqli_fetch_assoc($query)){
-					if(strcmp($row['email'],$_GET['email'])==0){
+					if(strcmp($row['email'],$_SESSION['email'])==0){
 						$encontrado=1;
+						$tipo = $row['tipo'];
 						break;	
 					}
 				}
 				
-				if($encontrado){
+				if($encontrado&&($tipo==1||$tipo==2)){
 					echo "	<div>
 								<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:center;'> <p style='text-align:center;'>OBTENER PREGUNTA</p>
-									<form name='datos' ID='datos' action='ClientGetQuestion.php?email=".$_GET['email']."' method='POST'>
+									<form name='datos' ID='datos' action='ClientGetQuestion.php' method='POST'>
 										ID: <input type='number' id='id' name='id' size=55><br>
 										<input type='submit' id='ver' name='ver' value='Obtener pregunta'>	
 									</form>
 								</div>
 							</div>";
-
+				}else if($encontrado&&$tipo==3){
+					echo"<div style='color:white; background-color:#ff0000'>El usuario no tiene los privilegios estipulados para acceder a esta página.</div>";
 				}else{
 					echo"<div style='color:white; background-color:#ff0000'>El usuario no está registrado.</div>";
 				}

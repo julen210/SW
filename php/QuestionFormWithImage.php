@@ -11,7 +11,10 @@
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
 	<?php
-		if(!isset($_GET['email'])){
+		if(!isset($_SESSION)){
+			session_start();
+		}
+		if(!isset($_SESSION['email'])){
 			echo "<div style='color:white; background-color:#ff0000'>Para acceder a esta página se necesita haber iniciado sesión.</div>";
 		}else{
 			$conexion = mysqli_connect($server, $user, $pass, $basededatos);
@@ -27,16 +30,17 @@
 				
 				$encontrado = 0;
 				while($row = mysqli_fetch_assoc($query)){
-					if(strcmp($row['email'],$_GET['email'])==0){
+					if(strcmp($row['email'],$_SESSION['email'])==0){
 						$encontrado=1;
+						$tipo = $row['tipo'];
 						break;	
 					}
 				}
 				
-				if($encontrado){
+				if($encontrado&&($tipo==1||$tipo==2)){
 					echo "	<div style='border-style:solid;border-color:black; font-family: Verdana,Geneva,sans-serif; text-align:left;'> <p style='text-align:center;'>DATOS DE LA PREGUNTA</p>
-								<form method='POST' action='AddQuestionWithImage.php?email=".$_GET['email']."' id='fquestion' name='fquestion' enctype='multipart/form-data' accept-charset='UTF-8'>
-									Email*: <input type='text' id='email' name='email' value='".$_GET['email']."' size=35 readonly><span id='eemail'></span><br>
+								<form method='POST' action='AddQuestionWithImage.php' id='fquestion' name='fquestion' enctype='multipart/form-data' accept-charset='UTF-8'>
+									Email*: <input type='text' id='email' name='email' value='".$_SESSION['email']."' size=35 readonly><span id='eemail'></span><br>
 									Enunciado de la pregunta*: <input type='text' id='enunciado' name='enunciado' size=55><span id='eenunciado'></span><br>
 									Respuesta correcta*: <input type='text' id='correcta' name='correcta' size=55><span id='ecorrecta'></span><br>
 									Respuesta incorrecta 1*: <input type='text' id='incorrecta1' name='incorrecta1' size=55><span id='eincorrecta1'></span><br>
@@ -52,7 +56,7 @@
 							</div>";
 
 				}else{
-					echo"<div style='color:white; background-color:#ff0000'>El usuario no está registrado.</div>";
+					echo"<div style='color:white; background-color:#ff0000'>El usuario no está registrado o no tiene los privilegios estipulados.</div>";				
 				}
 				mysqli_close($conexion);
 				

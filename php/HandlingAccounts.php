@@ -28,6 +28,15 @@
 			background-color: #dddddd;
 		}
 	</style>
+	<script>
+		function confirmacion(dialogo){
+			if(confirm(dialogo)==true){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	</script>
 </head>
 <body>
 	<?php include '../php/Menus.php' ?>
@@ -52,11 +61,17 @@
 					while($row = mysqli_fetch_assoc($queryUsuario)){
 						if(strcmp($row['email'],$_SESSION['email'])==0){
 							$encontrado=1;
+							$tipo = $row['tipo'];
+							if($row['estado']=='1'){
+								$estado = 'Activo';
+							}else if($row['estado']=='0'){
+								$estado = 'Bloqueado';
+							}
 							break;	
 						}
 					}
 					
-					if($encontrado){
+					if($encontrado&&$tipo==3){
 						// Create connection
 						$conexion = mysqli_connect($server, $user, $pass, $basededatos);
 						// Check connection
@@ -64,7 +79,7 @@
 							die('<div style="color:white; background-color:#ff0000">Error al conectar con la base de datos </div>');
 						}
 
-						$sql = "SELECT * FROM preguntas";
+						$sql = "SELECT * FROM usuarios";
 						$query = mysqli_query($conexion, $sql);
 
 						if (mysqli_num_rows($query) > 0) {
@@ -72,25 +87,32 @@
 								<table>
 									<tr>
 										<th>Email</th>
-										<th>Pregunta</th>
-										<th>Respuesta Correcta</th>
+										<th>Contraseña</th>
 										<th>Imagen</th>
+										<th>Estado</th>
+										<th>Cambiar Estado</th>
+										<th>Borrar Usuario</th>
 									</tr>
 							";
-							// output data of each row
 							while($row = mysqli_fetch_assoc($query)) {
-								//r_correcta, r_in1, r_in2, r_in3, complejidad, tema  
-								if($row["img"]==''){
+								if($row["imagen"]==''){
 									$rutaimagen = '../images/noimage.png';
 								}else{
-									$rutaimagen = '../images/'.$row["img"];
+									$rutaimagen = '../images/'.$row["imagen"];
+								}
+								if($row['estado']=='1'){
+									$estadousuario = "Activo";
+								}else{
+									$estadousuario = "Bloqueado";
 								}
 								echo" 
 									<tr>
 										<td>".$row["email"]."</td>
-										<td>".$row["enunciado"]."</td>
-										<td>".$row["r_correcta"]."</td>
+										<td>".$row["password"]."</td>
 										<td style='text-align:center;'> <img src=".$rutaimagen." height='100'/></td>
+										<td>".$estadousuario."</td>
+										<td><form method='POST' action='ChangeState.php' onsubmit='return confirm(&quot;¿Seguro que quieres cambiar el estado?&quot;);'><input type='submit' name='".$row['email']."' value='Cambiar Estado'/></form></td>
+										<td><form method='POST' action='RemoveUser.php' onsubmit='return confirm(&quot;¿Seguro que quieres borrar el usuario?&quot;);'><input type='submit' name='".$row['email']."' value='Borrar Usuario'/></form></td>
 									</tr>
 								";
 							}

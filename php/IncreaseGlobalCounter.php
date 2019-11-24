@@ -3,7 +3,10 @@
 		libxml_use_internal_errors(TRUE);
 		$xml = simplexml_load_file('../xml/Counter.xml');
 		$encontrado = false;
-		$mail = $_GET['email'];
+		if(!isset($_SESSION)){
+			session_start();
+		}
+		$mail = $_SESSION['email'];
 		foreach ($xml->children() as $users){
 			if($users == $mail){
 				$encontrado = true;
@@ -11,7 +14,7 @@
 			}
 		}
 		if(!$encontrado){
-			$xml->addChild('user',$_GET['email']);
+			$xml->addChild('user',$_SESSION['email']);
 		}
 		$xml->asXML('../xml/Counter.xml');
 	}catch(Exception $e){

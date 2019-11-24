@@ -68,11 +68,11 @@
 					$incorrectas->addChild('value',$_POST['incorrecta3']);
 					$xml->asXML('../xml/Questions.xml');
 					echo"	<div style='color:white; background-color:#00cc66'>
-						<strong>¡Pregunta guardada con éxito en XML!</strong> Para ver el resto de preguntas <a href='../php/ShowXMLQuestions.php?email=".$_GET['email']."' class='alert-link'>pulsa aquí</a>.
+						<strong>¡Pregunta guardada con éxito en XML!</strong> Para ver el resto de preguntas <a href='../php/ShowXMLQuestions.php' class='alert-link'>pulsa aquí</a>.
 						</div>
 					";
 				}catch(Exception $e){
-					echo "<div style='color:white; background-color:#ff0000'>No se ha insertado la pregunta en XML, inténtelo otra vez <a href='../php/QuestionFormWithImage.php?email=".$_GET['email']."' class='alert-link'>aquí</a></div>";
+					echo "<div style='color:white; background-color:#ff0000'>No se ha insertado la pregunta en XML, inténtelo otra vez <a href='../php/QuestionFormWithImage.php' class='alert-link'>aquí</a></div>";
 				}
 				//FIN XML
 			}
@@ -80,11 +80,11 @@
 			echo "</div>";
 			if($validacion){
 				echo "	<div style='color:white; background-color:#00cc66'>
-						<strong>¡Pregunta guardada con éxito en BBDD!</strong> Para ver el resto de preguntas <a href='../php/ShowQuestionsWithImage.php?email=".$_GET['email']."' class='alert-link'>pulsa aquí.</a>.
+						<strong>¡Pregunta guardada con éxito en BBDD!</strong> Para ver el resto de preguntas <a href='../php/ShowQuestionsWithImage.php' class='alert-link'>pulsa aquí.</a>.
 						</div>
 					";
 			}else{
-				echo "<div style='color:white; background-color:#ff0000'>Error en los campos, inténtalo otra vez <a href='../php/QuestionFormWithImage.php?email=".$_GET['email']."' class='alert-link'>aquí.</a></div>";
+				echo "<div style='color:white; background-color:#ff0000'>Error en los campos, inténtalo otra vez <a href='../php/QuestionFormWithImage.php' class='alert-link'>aquí.</a></div>";
 			}
 		}else{
 			echo "<div style='color:white; background-color:#ff0000'>No se ha añadido ninguna pregunta a la base de datos.</div>";

@@ -33,15 +33,40 @@
 	<?php include '../php/Menus.php' ?>
 	<section class="main" id="s1">
     <?php
-    // Create connection
-    $conexion = mysqli_connect($server, $user, $pass, $basededatos);
-    // Check connection
-    if (!$conexion) {
-        die('<div style="color:white; background-color:#ff0000">Error al conectar con la base de datos </div>');
-    }
+		if(!isset($_SESSION)){
+			session_start();
+		}
+		if(isset($_SESSION['email'])){
+			$conexion = mysqli_connect($server, $user, $pass, $basededatos);
+				// Check connection
+				if (!$conexion) {
+					die('<div style="color:white; background-color:#ff0000">Error al conectar con la base de datos </div>');
+				}
 
-    $sql = "SELECT * FROM preguntas";
-    $query = mysqli_query($conexion, $sql);
+				$sqlUsuario = "SELECT * FROM usuarios";
+				$queryUsuario = mysqli_query($conexion, $sqlUsuario);
+
+				if (mysqli_num_rows($queryUsuario) > 0) {
+					
+					$encontrado = 0;
+					while($row = mysqli_fetch_assoc($queryUsuario)){
+						if(strcmp($row['email'],$_SESSION['email'])==0){
+							$encontrado=1;
+						break;	
+						}
+					}
+					
+					if($encontrado){
+						// Create connection
+						$conexion = mysqli_connect($server, $user, $pass, $basededatos);
+						// Check connection
+						if (!$conexion) {
+							die('<div style="color:white; background-color:#ff0000">Error al conectar con la base de datos </div>');
+						}
+
+						$sql = "SELECT * FROM preguntas";
+						$query = mysqli_query($conexion, $sql);
+
 
     if (mysqli_num_rows($query) > 0) {
       echo"<div>
@@ -64,9 +89,20 @@
           ";
         }
         echo"</table></div>";
-    } else {
-        echo '<div style="color:white; background-color:#ff0000">La base de datos está vacía.</div>';
-    }
+    }else {
+		echo '<div style="color:white; background-color:#ff0000">El usuario no está registrado.</div>';
+	}
+		mysqli_close($conexion);						
+	}else{
+		die('<div style="color:white; background-color:#ff0000">El usuario no está registrado.</div>');
+	}
+						
+	}else{
+		die('<div style="color:white; background-color:#ff0000">El usuario no está registrado.</div>');					
+	}
+	}else{
+	echo "<div style='color:white; background-color:#ff0000'>Para acceder a esta página se necesita haber iniciado sesión.</div>";
+	}
 
     mysqli_close($conexion);
     ?>

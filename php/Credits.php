@@ -4,7 +4,7 @@
   <?php include '../html/Head.html'?>
   <?php 
 	define("API_OWM","2c166a145ac561fb98d039878d560c06");
-	$datoscliente = json_decode(file_get_contents('http://www.geoplugin.net/json.gp?ip='.$_SERVER['REMOTE_ADDR']),true);
+	$datoscliente = json_decode(file_get_contents('http://www.geoplugin.net/json.gp?ip=77.230.150.38'),true);
     $realIP = file_get_contents("http://ipecho.net/plain");
 	$datosservidor = json_decode(file_get_contents('http://ipinfo.io/'.$realIP.'/geo'),true);
 	$loc = explode(",", $datosservidor['loc']);

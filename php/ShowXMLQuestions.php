@@ -35,7 +35,10 @@
   <section class="main" id="s1">
     <div>
 		<?php
-			if(isset($_GET['email'])){
+			if(!isset($_SESSION)){
+				session_start();
+			}
+			if(isset($_SESSION['email'])){
 				//comprobar si está en la BBDD
 				$conexion = mysqli_connect($server, $user, $pass, $basededatos);
 					// Check connection
@@ -50,7 +53,7 @@
 						
 						$encontrado = 0;
 						while($row = mysqli_fetch_assoc($query)){
-							if(strcmp($row['email'],$_GET['email'])==0){
+							if(strcmp($row['email'],$_SESSION['email'])==0){
 								$nombre = $row['nombre'];
 								$encontrado=1;
 								break;	
@@ -80,7 +83,7 @@
 								}
 								echo "</table></div>";
 							}catch(Exception $e){
-								echo "<div style='color:white; background-color:#ff0000'>No se ha podido cargar el XML, inténtelo otra vez <a href='../php/ShowXMLQuestions.php?email=".$_GET['email']."' class='alert-link'>aquí</a></div>";
+								echo "<div style='color:white; background-color:#ff0000'>No se ha podido cargar el XML, inténtelo otra vez <a href='../php/ShowXMLQuestions.php' class='alert-link'>aquí</a></div>";
 							}
 							//FIN XML							
 						}else{

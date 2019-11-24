@@ -28,22 +28,30 @@
 
 					$sql = "SELECT * FROM usuarios";
 					$query = mysqli_query($conexion, $sql);
-
+						
+					$salt = crypt($_POST['email'],"SW");
+					
+					
 					if (mysqli_num_rows($query) > 0) {
 						
 						$encontrado = 0;
 						while($row = mysqli_fetch_assoc($query)){
-							if(strcmp($row['email'],$_POST['email'])==0 && strcmp($row['password'],$_POST['password'])==0){
-								$nombre = $row['nombre'];
-								$encontrado=1;
+							if(strcmp($row['email'],$_POST['email'])==0){
+								if(hash_equals($row['password'], crypt($_POST['password'], $salt))){
+									$nombre = $row['nombre'];
+									$estado = $row['estado'];
+									$encontrado=1;
+								}
 								break;	
 							}
 						}
 						
-						if($encontrado){
-							echo '<script>alert("Bienvenido, '.$nombre.'."); location.href="Layout.php?email='.$_POST['email'].'";</script>';
+						if($encontrado&&$estado==1){
+							session_start();
+							$_SESSION['email'] = $_POST['email'];
+							echo '<script>alert("Bienvenido, '.$nombre.'."); location.href="Layout.php";</script>';							
 						}else{
-							echo "<div style='color:white; background-color:#ff0000'>Error en los campos, inténtalo otra vez.</div>";
+							echo "<div style='color:white; background-color:#ff0000'>Error en los campos o usuario bloqueado, inténtalo otra vez.</div>";
 						}
 						mysqli_close($conexion);
 						
