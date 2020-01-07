@@ -29,7 +29,7 @@
 			if(isset($_FILES['foto'])) {
 				$imagen = $_FILES['foto']['name'];
 				$imagenTMP = $_FILES['foto']['tmp_name'];
-				$carpeta = "A:/xampp/htdocs/Proyecto/images/";
+				$carpeta = $_SERVER['DOCUMENT_ROOT'].'/proyecto/images/';
 				move_uploaded_file($imagenTMP, $carpeta.$imagen);
 			}
 			$sql="INSERT INTO preguntas (ID, email, enunciado, r_correcta, r_in1, r_in2, r_in3, complejidad, tema, img) VALUES

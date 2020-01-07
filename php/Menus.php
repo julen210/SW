@@ -19,8 +19,8 @@ if(!isset($_SESSION)){
 				session_start();
 			}
 			if(!isset($_SESSION['email'])){
-				echo "<span class='right'><a href='/Proyecto/php/SignUp.php'>Registro</a></span> ";
-				echo "<span class='right'><a href='/Proyecto/php/LogIn.php'>Login</a></span>";
+				echo "<span class='right'><a href='SignUp.php'>Registro</a></span> ";
+				echo "<span class='right'><a href='LogIn.php'>Login</a></span>";
 			}else{
 				$conexion = mysqli_connect($server, $user, $pass, $basededatos);
 				// Check connection
@@ -53,14 +53,14 @@ if(!isset($_SESSION)){
 						echo "	<span class='right' id='logout'><a onclick='logout();' style='text-decoration: underline; cursor: pointer;'>Logout</a></span>";
 						echo"	<span class='right'>Bienvenido, ".$nombre."<img src=".$rutaimagen." height='100'/></span>";
 					}else{
-						echo "<span class='right'><a href='/Proyecto/php/SignUp.php'>Registro</a></span> ";
-						echo "<span class='right'><a href='/Proyecto/php/LogIn.php'>Login</a></span>";
+						echo "<span class='right'><a href='SignUp.php'>Registro</a></span> ";
+						echo "<span class='right'><a href='LogIn.php'>Login</a></span>";
 					}
 					mysqli_close($conexion);
 					
 				}else{
-					echo "<span class='right'><a href='/Proyecto/php/SignUp.php'>Registro</a></span> ";
-					echo "<span class='right'><a href='/Proyecto/php/LogIn.php'>Login</a></span>";
+					echo "<span class='right'><a href='SignUp.php'>Registro</a></span> ";
+					echo "<span class='right'><a href='LogIn.php'>Login</a></span>";
 				}
 			}
 		?>

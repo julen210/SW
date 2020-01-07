@@ -64,7 +64,7 @@
                 require_once('../lib/nusoap.php');
                 require_once('../lib/class.wsdlcache.php');
 
-				$soapclient = new nusoap_client( 'http://localhost/Proyecto/php/GetQuestionWS.php?wsdl',true);
+				$soapclient = new nusoap_client( 'https://sw19julensuarez.000webhostapp.com/proyecto/php/GetQuestionWS.php?wsdl',true);
                 $result = $soapclient->call('ObtenerPregunta', array('x'=>$id));
 
 				if($result['autor']==''){

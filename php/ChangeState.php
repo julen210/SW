@@ -8,10 +8,8 @@
 			if (!$mysql) {
 				die();
 			}
-
 			$sql1 = "SELECT * FROM usuarios WHERE email='$emailbien'";
 			$query = mysqli_query($mysql, $sql1);
-
 			if (mysqli_num_rows($query) > 0) {
 				while($row = mysqli_fetch_assoc($query)){
 						$estado=$row['estado'];
@@ -31,7 +29,6 @@
 			if($_SESSION['email']==$emailbien && $estadocambiado ==0){
 				session_destroy();
 			}
-
 			
 			if(isset($_POST[$email])) {
 				$sql="UPDATE usuarios SET estado = '$estadocambiado' WHERE email = '$emailbien'";
@@ -42,10 +39,10 @@
 				}else{
 					die();
 				}
-				header('Location: HandlingAccounts.php');
+				echo '<script language="javascript">window.location.href="HandlingAccounts.php"</script>';
 			}
 	}else{
 		echo "<script>alert('No se ha podido cambiar el estado.');</script>";
-		header('Location: HandlingAccounts.php');
+		echo '<script language="javascript">window.location.href="HandlingAccounts.php"</script>';
 	}
 ?>
